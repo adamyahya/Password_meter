@@ -3,8 +3,6 @@ import requests
 
 HIBP_API_URL = "https://api.pwnedpasswords.com/range/"
 
-
-
 def hash_password(password:str)->str :
     """Hash password with SHA-1 and return uppercase hex digest."""
     sha1= hashlib.sha1(password.encode("utf-8")).hexdigest().upper()
@@ -37,5 +35,4 @@ def is_pwned(password:str)-> tuple[bool,int]:
         hashsuffix,count = line.split(":")
         if hashsuffix == suffix :
             return(True, int (count))
-    
     return (False,0)
